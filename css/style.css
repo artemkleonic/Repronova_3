@@ -1629,7 +1629,7 @@ mark.repro-mark{
 ========================================================= */
 :root {
   --header-wine: #351022;
-  --footer-purple: #3b176f;
+  --footer-purple: #161a56;
   --anchor-offset: 112px;
 }
 
@@ -1712,7 +1712,7 @@ section[id], main[id], div[id="contact"] { scroll-margin-top: var(--anchor-offse
 
 /* Footer: compact, purple, uncluttered */
 .site-footer { background: var(--footer-purple); padding-block: 0 22px; }
-.site-footer::before { opacity: .18; }
+.site-footer::before { background: #161a56; opacity: 1; }
 .site-footer .container { padding-top: 24px; }
 .footer-top { grid-template-columns: .8fr 2fr 1.15fr; gap: 28px; padding-bottom: 16px; }
 .footer-nav { gap: 24px; }
@@ -1749,4 +1749,92 @@ section[id], main[id], div[id="contact"] { scroll-margin-top: var(--anchor-offse
   .partners-categories { grid-template-columns: 1fr; }
   .swiper-services .card-image { height: 190px; }
   .founder-photo { min-height: 390px; }
+}
+
+
+/* Final logo and media-grid corrections — 31 July 2026 */
+.header-logo .logo-img {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+.seen-logos {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  justify-items: center;
+}
+.seen-logo {
+  width: 100%;
+}
+.seen-logo-spiegel img,
+.seen-logo-aftonbladet img {
+  max-width: 170px;
+}
+
+@media (max-width: 1050px) {
+  .seen-logos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 650px) {
+  .seen-logos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Final approved REPRONOVA logo treatment — 31 July 2026 */
+.header-logo .logo-img,
+.logo-picture .logo-img {
+  filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+}
+
+/* =========================================================
+   FINAL HEADER ALIGNMENT — 31.07.2026
+   Центрирует всю композицию меню + логотип + инструменты
+   как единый блок, а не только сам логотип.
+========================================================= */
+@media (min-width: 1501px) {
+  .site-header .container {
+    max-width: none;
+    width: 100%;
+    padding-inline: clamp(24px, 3vw, 58px);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(18px, 1.25vw, 28px);
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .nav-desktop,
+  .nav-left,
+  .nav-right {
+    flex: 0 0 auto;
+    justify-self: auto;
+    align-items: center;
+  }
+
+  .nav-left,
+  .nav-right {
+    justify-content: center;
+  }
+
+  .header-logo {
+    flex: 0 0 clamp(270px, 15vw, 310px);
+    width: clamp(270px, 15vw, 310px);
+    min-width: 270px;
+    align-self: center;
+    justify-self: auto;
+    padding-inline: 0;
+  }
+
+  .logo-picture {
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .nav-row,
+  .nav-right .nav-row {
+    justify-content: center;
+  }
 }
