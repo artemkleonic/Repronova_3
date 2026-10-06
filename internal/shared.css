@@ -1,0 +1,67 @@
+/* Shared interaction and form styling. */
+[hidden]{display:none!important}
+:focus-visible{outline:3px solid #2563a6;outline-offset:4px}
+.homepage .contact-card :focus-visible,.site-footer :focus-visible{outline-color:#9ed8ff}
+.skip-link{position:fixed;top:-100px;left:18px;z-index:2000;padding:12px 18px;background:#fff;color:#662046}
+.skip-link:focus{top:12px}
+.header-controls{display:flex;align-items:center;gap:8px}
+.header-controls .search-btn{font-size:28px;color:#662046;flex-shrink:0}
+.header-logo .logo-img{width:100%;height:auto;max-height:none}
+.logo-picture{height:auto}
+.nav-mobile{overflow:auto;max-height:calc(100dvh - 100px);padding-bottom:24px}
+.nav-mobile button{font:inherit;background:none;border:0;cursor:pointer}
+.menu-open,.search-open{overflow:hidden}
+.search-overlay.open{display:flex;opacity:1;visibility:visible}
+.search-card h2{margin:0;font-size:1.2rem}
+.search-card .search-input{min-width:0;width:100%;font-size:16px}
+.internal-back{display:flex;flex-wrap:wrap;justify-content:center;gap:18px 30px}
+.home-card-image{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;margin-bottom:18px}
+.home-carousel{position:relative;min-width:0}
+.home-carousel .swiper{overflow:hidden}
+.home-carousel .swiper-slide{height:auto;display:flex}
+.home-carousel .card{width:100%;height:100%;min-width:0}
+.home-carousel .card a{margin-top:auto}
+.home-carousel .swiper-pagination{position:static;margin:18px 0 5px}
+.carousel-controls{display:flex;justify-content:center;align-items:center;gap:18px;margin-top:22px}
+.carousel-controls button{border:1px solid #662046;color:#662046;background:#fff;padding:10px 14px;font:inherit;font-size:.9rem;cursor:pointer;min-height:44px}
+.carousel-controls button:disabled{opacity:.4;cursor:default}
+.carousel-position{font-size:.88rem;white-space:nowrap}
+.material-meta{font-size:.82rem!important;line-height:1.5!important;font-weight:600;color:#662046!important}
+.role-note,.media-note{margin:24px auto 0;max-width:850px;line-height:1.7;text-align:center}
+.role-note a,.media-note a{text-decoration:underline}
+.homepage .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:22px}
+.field{min-width:0}
+.field.wide{grid-column:1/-1}
+.field label,.footer-subscribe label{display:block;font-size:.9rem;font-weight:600;margin:0 0 8px}
+.field-qualifier{font-size:.78rem;font-weight:400}
+.homepage .field input,.homepage .field select,.homepage .field textarea{width:100%;max-width:100%;min-width:0;padding:11px 12px;font:inherit;font-size:16px;line-height:1.5;border:1px solid #bcc4cd;background:#fff;color:#202631;border-radius:0}
+.homepage .field textarea{resize:vertical}
+.homepage .contact-card label,.homepage .contact-card .form-guidance{color:#fff}
+.homepage .contact-card input::placeholder,.homepage .contact-card textarea::placeholder{color:#586372}
+.form-guidance{margin:24px 0;font-size:.86rem;line-height:1.65}
+.form-guidance p{margin-bottom:14px}
+.honey{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+.form-status{margin:14px 0 0;font-size:.9rem;line-height:1.6}
+.form-status:empty{display:none}
+.homepage .field-error,.homepage .form-status.error,.site-footer .field-error,.site-footer .form-status.error{display:block;color:#ffd4dd;font-size:.85rem;margin-top:5px}
+.homepage .form-status.success,.site-footer .form-status.success{color:#c9f5db}
+.homepage [aria-invalid=true]{border-color:#ffadb9!important}
+button:disabled{cursor:wait}
+.footer-brand,.footer-col,.footer-actions,.footer-nav{min-width:0}
+.footer-logo-img{width:100%;height:auto;max-width:245px;display:block}
+.footer-contact-item,.footer-note,.footer-links a{overflow-wrap:anywhere}
+.footer-subscribe input{width:100%;min-width:0;max-width:100%;padding:11px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.6);color:#fff;border-radius:0;font-size:16px}
+.footer-subscribe .footer-note{font-size:.78rem;line-height:1.6;margin:12px 0}
+.footer-subscribe a{color:white;text-decoration:underline}
+.footer-subscribe button{margin-top:10px}
+.footer-legal{flex-wrap:wrap}
+.burger.active .burger-line{background:transparent}
+.burger.active .burger-line::before{top:0;transform:rotate(45deg)}
+.burger.active .burger-line::after{top:0;transform:rotate(-45deg)}
+@media(max-width:1024px){.footer-top{grid-template-columns:1fr}.footer-nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:768px){.homepage .form-grid{grid-template-columns:1fr}.internal-page .header-inner,.homepage .header-inner{grid-template-columns:42px minmax(0,1fr) 84px;column-gap:8px}.header-logo{width:100%;padding-inline:0}.logo-picture{width:100%;max-width:280px}.carousel-controls{gap:10px}.carousel-controls button{padding:10px;font-size:.8rem}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+/* Contact card prose uses explicit colours; generic card paragraphs must not override it. */
+.homepage .contact-card>p,.homepage .contact-card .form-guidance p{color:#f2f5f8}
+.header-controls .search-btn{color:#fff}
+.site-header :focus-visible{outline-color:#9ed8ff}

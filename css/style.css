@@ -1,49 +1,6 @@
 /* =========================================================
-   JOTIA FONT FAMILY (НЕ меняем имена файлов)
+   TYPOGRAPHY — missing Jotia files omitted; system fallback is explicit
 ========================================================= */
-@font-face {
-  font-family: "Jotia";
-  font-style: normal;
-  font-weight: 100;
-  src: url("../fonts/fonnts.com-jotia-thin.otf") format("opentype");
-  font-display: swap;
-}
-@font-face {
-  font-family: "Jotia";
-  font-style: normal;
-  font-weight: 300;
-  src: url("../fonts/fonnts.com-jotia-light.otf") format("opentype");
-  font-display: swap;
-}
-@font-face {
-  font-family: "Jotia";
-  font-style: normal;
-  font-weight: 400;
-  src: url("../fonts/fonnts.com-jotia-regular.otf") format("opentype");
-  font-display: swap;
-}
-@font-face {
-  font-family: "Jotia";
-  font-style: normal;
-  font-weight: 500;
-  src: url("../fonts/fonnts.com-jotia-medium.otf") format("opentype");
-  font-display: swap;
-}
-@font-face {
-  font-family: "Jotia";
-  font-style: normal;
-  font-weight: 700;
-  src: url("../fonts/fonnts.com-jotia-bold.otf") format("opentype");
-  font-display: swap;
-}
-@font-face {
-  font-family: "Jotia";
-  font-style: normal;
-  font-weight: 800;
-  src: url("../fonts/fonnts.com-jotia-heavy.otf") format("opentype");
-  font-display: swap;
-}
-
 /* =========================================================
    TOKENS / RESET
 ========================================================= */
@@ -2217,3 +2174,10 @@ div[id="contact"] {
     justify-content: center;
   }
 }
+
+/* October 2026 baseline: approved blue overlay, preserving burgundy CTA. */
+.band-hero{background-color:#161a56}
+.band-hero::before{width:60%;background:linear-gradient(to left,rgba(22,26,86,.94) 0%,rgba(22,26,86,.87) 60%,rgba(22,26,86,0) 100%)}
+.band-deep{background:#161a56}
+[id]{scroll-margin-top:calc(var(--header-current,100px) + 16px)}
+@media(max-width:1024px){.band-hero::before{width:100%;background:linear-gradient(90deg,rgba(22,26,86,.75),rgba(22,26,86,.93))}}

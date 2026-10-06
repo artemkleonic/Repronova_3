@@ -21,17 +21,47 @@
   if(!menu||menu.hidden)return;
   if(e.key==='Escape'){e.preventDefault();closeMenu(true);return}
   if(e.key==='Tab'){
-   const items=[menuButton,...menu.querySelectorAll('a[href]')];
+   const items=[menuButton,...menu.querySelectorAll('a[href],button')];
    const i=items.indexOf(document.activeElement),next=(i+(e.shiftKey?-1:1)+items.length)%items.length;
    e.preventDefault();items[next].focus();
   }
  });
  menu?.addEventListener('click',e=>{if(e.target.closest('a'))closeMenu()});
+ document.addEventListener('click',e=>{if(menu&&!menu.hidden&&!menu.contains(e.target)&&!menuButton?.contains(e.target))closeMenu()});
  window.addEventListener('resize',()=>{if(innerWidth>1500)closeMenu()});
  const back=document.getElementById('back-to-top');
- function scrollState(){if(back){back.hidden=scrollY<=500;back.classList.toggle('visible',scrollY>500)}document.getElementById('site-header')?.classList.toggle('scrolled',scrollY>50)}
+ function scrollState(){if(back){back.hidden=scrollY<=500;back.classList.toggle('visible',scrollY>500)}const header=document.getElementById('site-header');header?.classList.toggle('scrolled',scrollY>50);document.documentElement.style.setProperty('--header-current',(header?.offsetHeight||100)+'px')}
  window.addEventListener('scroll',scrollState,{passive:true});scrollState();
+ window.addEventListener('resize',scrollState);
  back?.addEventListener('click',()=>window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}));
+ const overlay=document.getElementById('search-overlay'),searchInput=document.getElementById('search-input'),searchForm=document.getElementById('search-form'),searchResult=document.getElementById('search-result');
+ const searchButtons=[document.getElementById('open-search'),document.getElementById('open-search-mobile')].filter(Boolean);
+ let searchFocus=null;
+ const searchBackground=[...document.querySelectorAll('header,main,.site-footer,.back-to-top')];
+ function closeSearch(){if(!overlay)return;overlay.hidden=true;overlay.inert=true;overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true');searchButtons.forEach(b=>b.setAttribute('aria-expanded','false'));document.body.classList.remove('search-open');searchBackground.forEach(el=>el.inert=false);searchFocus?.focus()}
+ function openSearch(event){if(!overlay)return;const opener=event?.currentTarget||document.activeElement;searchFocus=menu?.contains(opener)?menuButton:opener;closeMenu();overlay.hidden=false;overlay.inert=false;overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');searchButtons.forEach(b=>b.setAttribute('aria-expanded','true'));document.body.classList.add('search-open');searchBackground.forEach(el=>el.inert=true);searchInput?.focus()}
+ searchButtons.forEach(b=>b.addEventListener('click',openSearch));
+ document.getElementById('close-search')?.addEventListener('click',closeSearch);
+ overlay?.addEventListener('click',e=>{if(e.target===overlay)closeSearch()});
+ document.addEventListener('keydown',e=>{
+  if(!overlay||overlay.hidden)return;
+  if(e.key==='Escape'){e.preventDefault();closeSearch()}
+  if(e.key==='Tab'){const items=[...overlay.querySelectorAll('button,input')],i=items.indexOf(document.activeElement);e.preventDefault();items[(i+(e.shiftKey?-1:1)+items.length)%items.length].focus()}
+ });
+ searchForm?.addEventListener('submit',e=>{
+  e.preventDefault();const query=searchInput.value.trim();if(!query)return;
+  const main=document.querySelector('main');
+  main.querySelectorAll('mark.repro-mark').forEach(mark=>{const parent=mark.parentNode;mark.replaceWith(document.createTextNode(mark.textContent));parent.normalize()});
+  const walker=document.createTreeWalker(main,NodeFilter.SHOW_TEXT),nodes=[];
+  while(walker.nextNode()){const node=walker.currentNode;if(node.parentElement.closest('script,style,textarea,select,button,label,.form-status,[hidden]'))continue;if(node.nodeValue.toLowerCase().includes(query.toLowerCase()))nodes.push(node)}
+  let first=null,count=0;
+  for(const node of nodes){const value=node.nodeValue,fragment=document.createDocumentFragment();let start=0,index;
+   while((index=value.toLowerCase().indexOf(query.toLowerCase(),start))!==-1){fragment.append(document.createTextNode(value.slice(start,index)));const mark=document.createElement('mark');mark.className='repro-mark';mark.textContent=value.slice(index,index+query.length);fragment.append(mark);first ||= mark;count++;start=index+query.length}
+   fragment.append(document.createTextNode(value.slice(start)));node.replaceWith(fragment);
+  }
+  searchResult.textContent=count?`${count} matches found.`:'No matches found on this page.';
+  if(first){closeSearch();const slide=first.closest('.swiper-slide'),swiper=slide?.closest('.swiper')?.swiper;if(swiper)swiper.slideTo([...slide.parentNode.children].indexOf(slide),0);first.scrollIntoView({block:'center',behavior:'instant'})}
+ });
  function setMode(mode){if(!['support','cooperation'].includes(mode))return;document.querySelectorAll('[data-mode]').forEach(el=>el.hidden=el.dataset.mode!==mode);document.querySelectorAll('[data-mode-button]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.modeButton===mode)))}
  document.querySelectorAll('[data-mode-button]').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.modeButton)));
  const params=new URLSearchParams(location.search);setMode(params.get('type')||'support');
