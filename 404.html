@@ -2199,6 +2199,11 @@ div[id="contact"] {
  .site-header .nav-link--primary{padding:5px 7px;}
 }
 
+
+/* Non-linked legacy media logos remain visually consistent but do not suggest clickable actions. */
+.seen-logo--unverified { cursor: default; }
+.seen-logo--unverified:hover img { opacity: .9; transform: none; filter: grayscale(100%); }
+
 /* Internal layout; shared controls are in shared.css. */
 .internal-page [hidden]{display:none!important}
 .internal-page .skip-link{position:fixed;left:18px;top:-100px;z-index:2000;background:#fff;color:var(--burgundy);padding:12px 18px}
