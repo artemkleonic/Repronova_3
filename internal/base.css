@@ -2198,3 +2198,8 @@ div[id="contact"] {
  .site-header .burger{display:none;}
  .site-header .nav-link--primary{padding:5px 7px;}
 }
+
+
+/* Non-linked legacy media logos remain visually consistent but do not suggest clickable actions. */
+.seen-logo--unverified { cursor: default; }
+.seen-logo--unverified:hover img { opacity: .9; transform: none; filter: grayscale(100%); }
