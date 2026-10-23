@@ -5,8 +5,8 @@ for (const region of document.querySelectorAll('[data-carousel]')) {
  const total=viewport.querySelectorAll('.swiper-slide').length;
  if(!window.Swiper)continue;
  const slider=new Swiper(viewport,{
-  slidesPerView:1,spaceBetween:24,watchOverflow:true,
-  breakpoints:{768:{slidesPerView:2},1024:{slidesPerView:3}},
+  slidesPerView:1,slidesPerGroup:1,spaceBetween:24,watchOverflow:true,
+  breakpoints:{768:{slidesPerView:2,slidesPerGroup:2},1024:{slidesPerView:3,slidesPerGroup:3}},
   navigation:{prevEl:previous,nextEl:next},
   pagination:{el:region.querySelector('.swiper-pagination'),clickable:true},
   a11y:{enabled:true,prevSlideMessage:'Previous cards',nextSlideMessage:'Next cards'},
