@@ -2363,3 +2363,46 @@ div[id="contact"] {
 .homepage .founder-photo {
   background-image: url("../img/founder-home-2026-11.webp");
 }
+
+/* REPRONOVA footer social icons — visual placeholders until approved URLs arrive. */
+.site-footer .footer-brand {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: stretch;
+  gap: 24px;
+}
+.site-footer .footer-social-wrap { padding-bottom: 8px; }
+.site-footer .footer-social-label {
+  display: block;
+  color: rgba(255,255,255,.84);
+  font-size: .78rem;
+  line-height: 1.4;
+}
+.site-footer .footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 9px;
+}
+.site-footer .footer-social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255,255,255,.40);
+  color: #fff;
+  background: transparent;
+  flex: none;
+  cursor: default;
+}
+.site-footer .footer-social-icon svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+@media (max-width: 1120px) {
+  .site-footer .footer-brand { gap: 16px; }
+  .site-footer .footer-social-wrap { padding-bottom: 0; }
+}
