@@ -2406,16 +2406,24 @@ button:disabled{cursor:wait}
               <a class="nav-link" href="insights/index.html">Insights</a>
               <a class="nav-link" href="resources/index.html">Resources</a>
 
-              <div class="nav-right-tools" aria-label="Header tools">
-                <a class="nav-link nav-link--primary" href="contact.html">Contact</a>
-
-                </div>
+              
               </div>
           </nav>
 
           <div class="header-controls">
-            <button class="search-btn" id="open-search" type="button" aria-label="Open site search" aria-controls="search-overlay" aria-expanded="false"><span aria-hidden="true">⌕</span></button>
-<span class="header-language" lang="en" aria-label="Current site language: English">EN</span>
+            <a class="header-contact" href="contact.html">CONTACT</a>
+            <button class="search-btn header-search-icon" id="open-search" type="button" aria-label="Open site search" aria-controls="search-overlay" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10.6" cy="10.6" r="6.6"/><path d="m15.6 15.6 5 5"/></svg></button>
+<div class="header-lang-switcher" id="header-lang-switcher">
+  <button class="header-lang-trigger" id="header-lang-trigger" type="button" aria-label="Choose language, currently English" aria-haspopup="true" aria-expanded="false" aria-controls="header-lang-menu">EN</button>
+  <div class="header-lang-menu" id="header-lang-menu" role="group" aria-label="Available languages" hidden>
+    <button type="button" class="header-lang-option current" data-lang="en" lang="en" aria-current="true"><span class="lang-code">EN</span><span class="lang-name">English</span><span aria-hidden="true">✓</span></button>
+    <button type="button" class="header-lang-option" data-lang="ru" lang="ru"><span class="lang-code">RU</span><span class="lang-name">Русский</span><span class="lang-soon">Soon</span></button>
+    <button type="button" class="header-lang-option" data-lang="de" lang="de"><span class="lang-code">DE</span><span class="lang-name">Deutsch</span><span class="lang-soon">Soon</span></button>
+    <button type="button" class="header-lang-option" data-lang="es" lang="es"><span class="lang-code">ES</span><span class="lang-name">Español</span><span class="lang-soon">Soon</span></button>
+    <button type="button" class="header-lang-option" data-lang="fr" lang="fr"><span class="lang-code">FR</span><span class="lang-name">Français</span><span class="lang-soon">Soon</span></button>
+    <p class="header-lang-notice" id="header-lang-notice" role="status" aria-live="polite">English is currently the only available website language.</p>
+  </div>
+</div>
 <button class="burger" id="burger" type="button" aria-label="Open navigation" aria-controls="nav-mobile" aria-expanded="false">
               <span class="burger-line"></span>
             </button>

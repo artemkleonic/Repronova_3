@@ -96,3 +96,42 @@
   });
  }
 })();
+
+
+/* Header language selector: the site content remains in English until translations exist. */
+(()=>{
+  'use strict';
+  const trigger = document.getElementById('header-lang-trigger');
+  const menu = document.getElementById('header-lang-menu');
+  if (!trigger || !menu) return;
+  const notice = document.getElementById('header-lang-notice');
+  const open = () => { menu.hidden = false; trigger.setAttribute('aria-expanded', 'true'); };
+  const close = (focus = false) => {
+    menu.hidden = true;
+    trigger.setAttribute('aria-expanded', 'false');
+    if (focus) trigger.focus();
+  };
+  trigger.addEventListener('click', () => {
+    if (menu.hidden) open(); else close();
+  });
+  menu.addEventListener('click', event => {
+    const button = event.target.closest('[data-lang]');
+    if (!button) return;
+    if (button.dataset.lang === 'en') { close(true); return; }
+    notice.textContent = `${button.querySelector('.lang-name').textContent} version is coming soon. The website currently remains in English.`;
+  });
+  document.addEventListener('click', event => {
+    if (!menu.hidden && !event.target.closest('#header-lang-switcher')) close();
+  });
+  document.addEventListener('keydown', event => {
+    if (menu.hidden) return;
+    if (event.key === 'Escape') { event.preventDefault(); close(true); return; }
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      const options = [...menu.querySelectorAll('[data-lang]')];
+      let index = options.indexOf(document.activeElement);
+      index = (index + (event.key === 'ArrowDown' ? 1 : -1) + options.length) % options.length;
+      options[index].focus();
+    }
+  });
+})();

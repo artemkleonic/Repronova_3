@@ -88,3 +88,121 @@ button:disabled{cursor:wait}
 @media (max-width: 1199px) {
   .site-header .header-inner {grid-template-columns: 42px minmax(0, 1fr) 118px;}
 }
+
+
+/* REPRONOVA — targeted header controls update (Nov 2026).
+   Only CONTACT, search and English-language dropdown styling; other layout unchanged. */
+.site-header .header-controls {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 5px;
+  position: relative;
+  z-index: 5;
+  flex-shrink: 0;
+}
+.site-header .header-contact,
+.site-header .header-search-icon,
+.site-header .header-lang-trigger {
+  box-sizing: border-box;
+  height: 32px;
+  border: 1px solid rgba(255,255,255,.48);
+  border-radius: 0;
+  color: #fff;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-family: inherit;
+  font-weight: 700;
+  letter-spacing: .04em;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+  transition: background-color .16s ease, border-color .16s ease;
+  flex-shrink: 0;
+}
+.site-header .header-contact { padding: 0 10px; }
+.site-header .header-search-icon,
+.site-header .header-lang-trigger { width: 33px; min-width: 33px; padding: 0; }
+.site-header .header-search-icon svg { width: 16px; height: 16px; display: block; }
+.site-header .header-contact:hover,
+.site-header .header-search-icon:hover,
+.site-header .header-lang-trigger:hover,
+.site-header .header-lang-trigger[aria-expanded="true"] {
+  background: rgba(255,255,255,.13);
+  border-color: #fff;
+}
+.site-header .header-lang-switcher { position: relative; flex-shrink: 0; }
+.site-header .header-lang-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 9px);
+  z-index: 1200;
+  width: 224px;
+  max-width: calc(100vw - 20px);
+  padding: 6px;
+  border: 1px solid #ded8db;
+  background: #fff;
+  color: #252b33;
+  box-shadow: 0 12px 32px rgba(16,11,21,.22);
+}
+.site-header .header-lang-menu::before {
+  content: "";
+  position: absolute;
+  right: 11px;
+  top: -6px;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-left: 1px solid #ded8db;
+  border-top: 1px solid #ded8db;
+  transform: rotate(45deg);
+}
+.site-header .header-lang-option {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 10px;
+  background: transparent;
+  color: #3c3440;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  border: 0;
+  cursor: pointer;
+}
+.site-header .header-lang-option:hover,
+.site-header .header-lang-option:focus-visible { background: #f4edf1; }
+.site-header .header-lang-option.current { background: #f5eef2; color: #662046; font-weight: 700; }
+.site-header .lang-code { min-width: 24px; font-size: 11px; font-weight: 800; letter-spacing: .04em; }
+.site-header .lang-name { flex: 1; }
+.site-header .lang-soon { font-size: 10px; font-weight: 400; color: #6d6d74; }
+.site-header .header-lang-notice {
+  margin: 5px 5px 1px;
+  padding: 9px 5px 3px;
+  border-top: 1px solid #ece6e8;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #5c5660;
+}
+.site-header .header-controls :focus-visible { outline: 2px solid #9ed8ff; outline-offset: 3px; }
+.site-header .header-lang-menu :focus-visible { outline-color: #662046; outline-offset: -2px; }
+/* Mobile: preserve the original compact emblem and burger navigation. */
+@media (max-width: 1199px) {
+  .site-header .header-inner { grid-template-columns: 42px minmax(0,1fr) auto; }
+  .site-header .header-controls { grid-column: 3; }
+}
+@media (max-width: 560px) {
+  .site-header .header-inner { column-gap: 4px; }
+  .site-header .header-controls { gap: 4px; }
+  .site-header .header-contact { padding: 0 5px; font-size: 9px; }
+  .site-header .header-search-icon,
+  .site-header .header-lang-trigger { width: 30px; min-width: 30px; }
+  .site-header .burger { width: 33px; min-width: 33px; }
+}
