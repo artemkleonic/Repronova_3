@@ -2348,3 +2348,18 @@ div[id="contact"] {
 
 /* Homepage teasers use complete source sentences, never CSS-cut text. */
 .home-carousel .card p:not(.material-meta){display:block;overflow:visible;-webkit-line-clamp:unset;line-clamp:unset;}
+
+
+/* REPRONOVA, 01 Nov 2026: ONLY client-requested visual corrections. */
+/* Press, hover or keyboard-focus restores each publication's original colours. */
+.seen .seen-logo:hover img,
+.seen .seen-logo:focus img,
+.seen .seen-logo:focus-visible img,
+.seen .seen-logo:active img {
+  filter: grayscale(0) !important;
+  opacity: 1;
+}
+/* Replace the photograph on the homepage only, leaving the rest untouched. */
+.homepage .founder-photo {
+  background-image: url("../img/founder-home-2026-11.webp");
+}

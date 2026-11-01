@@ -65,3 +65,26 @@ button:disabled{cursor:wait}
 .homepage .contact-card>p,.homepage .contact-card .form-guidance p{color:#f2f5f8}
 .header-controls .search-btn{color:#fff}
 .site-header :focus-visible{outline-color:#9ed8ff}
+
+
+/* REPRONOVA, 01 Nov 2026: EN indicator, no inactive language links. */
+.site-header .header-language {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  min-height: 32px;
+  padding: 0 4px;
+  border: 1px solid rgba(255,255,255,.55);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  line-height: 1;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.site-header .header-controls { gap: 4px; }
+@media (max-width: 1199px) {
+  .site-header .header-inner {grid-template-columns: 42px minmax(0, 1fr) 118px;}
+}
